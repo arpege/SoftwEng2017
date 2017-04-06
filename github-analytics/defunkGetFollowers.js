@@ -2,7 +2,7 @@ var GitHubApi = require("github");
 
 var github = new GitHubApi({
     // optional
-    debug: true,
+    debug: false,
     protocol: "https",
     host: "api.github.com", // should be api.github.com for GitHub
     //pathPrefix: "/api/v3", // for some GHEs; none for GitHub
@@ -14,14 +14,20 @@ var github = new GitHubApi({
     timeout: 5000
 });
 
-// TODO: optional authentication here depending on desired endpoints. See below in README.
+// user token
+github.authenticate({
+    type: "token",
+    token: "5b8bd8de8ba42dbdee0dc20a38c5effcb821cee6",
+});
 
+// get user followers
 github.users.getFollowingForUser({
-    // optional
-    // headers: {
-    //     "cookie": "blahblah"
-    // },
     username: "defunkt"
 }, function(err, res) {
-    console.log(JSON.stringify(res));
+
+  console.log("defunkt has " + res.data.length + " followers:");
+  for(var i=0; i<res.data.length; i++){
+    console.log(res.data[i].login);
+  }
+
 });
