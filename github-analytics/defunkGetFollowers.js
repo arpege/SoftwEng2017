@@ -17,7 +17,7 @@ var github = new GitHubApi({
 // user token
 github.authenticate({
     type: "token",
-    token: "5b8bd8de8ba42dbdee0dc20a38c5effcb821cee6",
+    token: "e1bc3fdf2942fc60d3bd9802e2bd9fc73dffaa27",
 });
 
 // get user followers
