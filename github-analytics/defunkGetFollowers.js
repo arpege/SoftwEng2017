@@ -14,20 +14,29 @@ var github = new GitHubApi({
     timeout: 5000
 });
 
-// user token
-github.authenticate({
-    type: "token",
-    token: "779c238ab38c25e54c68e84529ba2123393a6a17",
-});
-
 // get user followers
 github.users.getFollowingForUser({
     username: "defunkt"
 }, function(err, res) {
 
+  var jsonfile = require('jsonfile')
+
+  jsonfile.writeFile('result.json', res, function (err) {
+    console.error(err)
+  })
+
   console.log("defunkt has " + res.data.length + " followers:");
   for(var i=0; i<res.data.length; i++){
     console.log(res.data[i].login);
   }
+
+  // var obj = JSON.stringify(orgRepos).replace(/(^[\/]+|[\/]+$)/g, "");
+  // console.log(obj);
+  //
+  // var jsonfile = require('jsonfile')
+  //
+  // jsonfile.writeFile('result.json', orgRepos[0], function (err) {
+  //   console.error(err)
+  // })
 
 });

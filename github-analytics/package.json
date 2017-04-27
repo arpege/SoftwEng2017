@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
+    "json2csv": "^3.7.3",
     "jsonfile": "^2.4.0",
     "node-github": "^0.0.3"
   },
