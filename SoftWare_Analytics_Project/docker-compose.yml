@@ -1,0 +1,12 @@
+version: '2'
+services:
+  jenkins:
+    build: docker-images/getdatafromtravis
+    image: getdatafromtravis
+    restart: always
+    dns: "8.8.8.8"
+    ports:
+     - "8080:8080"
+    volumes:
+#     - jenkins-data:/var/jenkins_home
+     -  /tmp/:/usr/docker/src
